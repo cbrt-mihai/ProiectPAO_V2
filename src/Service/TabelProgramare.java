@@ -1,8 +1,6 @@
-package Service;
+package service;
 
-import Model.Medic;
-import Model.Pacient;
-import Model.Programare;
+import model.Programare;
 
 public class TabelProgramare {
     private int lastId = 0;
@@ -17,14 +15,14 @@ public class TabelProgramare {
 
     public Programare getProgramareByIndex(int k) {
         Programare prgAux = new Programare();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return prgAux;
         }
         else {
             prgAux.setId(programari[k].getId());
-            prgAux.setId_medic(programari[k].getId_medic());
-            prgAux.setId_pacient(programari[k].getId_pacient());
+            prgAux.setIdMedic(programari[k].getIdMedic());
+            prgAux.setIdPacient(programari[k].getIdPacient());
             prgAux.setData(programari[k].getData());
             prgAux.setOra(programari[k].getOra());
         }
@@ -36,11 +34,11 @@ public class TabelProgramare {
         Programare prgAux = new Programare();
         boolean found = false;
         for (int i = 1; i <= nr; i++) {
-            if ( (programari[i].getId_pacient() == id) && (programari[i].getData() == data) && (programari[i].getOra() == ora) ) {
+            if ( (programari[i].getIdPacient() == id) && (programari[i].getData() == data) && (programari[i].getOra() == ora) ) {
                 found = true;
                 prgAux.setId(programari[i].getId());
-                prgAux.setId_medic(programari[i].getId_medic());
-                prgAux.setId_pacient(programari[i].getId_pacient());
+                prgAux.setIdMedic(programari[i].getIdMedic());
+                prgAux.setIdPacient(programari[i].getIdPacient());
                 prgAux.setData(programari[i].getData());
                 prgAux.setOra(programari[i].getOra());
             }
@@ -51,12 +49,12 @@ public class TabelProgramare {
     }
 
     public void afiseazaProgramare(int k) {
-        if (k > nr)
+        if (k > nr || k < 0)
             System.out.println("Nu exista inregistrarea.");
         else
             System.out.println(programari[k].getId() + ". " +
-                    programari[k].getId_medic() + " - " +
-                    programari[k].getId_pacient() + " - " +
+                    programari[k].getIdMedic() + " - " +
+                    programari[k].getIdPacient() + " - " +
                     programari[k].getData() + " " +
                     programari[k].getOra());
     }
@@ -64,8 +62,8 @@ public class TabelProgramare {
     public void afiseazaProgramari() {
         for(int k=1; k<=nr; k++) {
             System.out.println(programari[k].getId() + ". " +
-                    programari[k].getId_medic() + " - " +
-                    programari[k].getId_pacient() + " - " +
+                    programari[k].getIdMedic() + " - " +
+                    programari[k].getIdPacient() + " - " +
                     programari[k].getData() + " " +
                     programari[k].getOra());
         }

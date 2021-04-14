@@ -1,14 +1,14 @@
-package Model;
+package model;
 
 public class IstoricAfectiuni {
     private int id;
     private int idPacient;
     private int idAfectiune;
 
-    public IstoricAfectiuni(int id_, int idPacient_, int idAfectiune_) {
-        id = id_;
-        idPacient = idPacient_;
-        idAfectiune = idAfectiune_;
+    public IstoricAfectiuni(int id, int idPacient, int idAfectiune) {
+        this.id = id;
+        this.idPacient = idPacient;
+        this.idAfectiune = idAfectiune;
     }
 
     public IstoricAfectiuni() {

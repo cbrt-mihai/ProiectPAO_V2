@@ -1,6 +1,6 @@
-package Main;
+package main;
 
-import Service.*;
+import service.*;
 
 import java.util.Scanner;
 
@@ -10,87 +10,6 @@ public class Main {
     public static void main(String [] args) {
         init();
         test();
-
-        UI();
-    }
-
-    public static void UI() {
-        Scanner scanner = new Scanner(System.in);
-        boolean done = false;
-
-        while(!done) {
-            System.out.print("Alege comanda (adauga, afiseaza, returneaza): ");
-            String cmd = scanner.nextLine();
-
-            command(cmd);
-        }
-    }
-
-    public static void command(String cmd) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Alege entitatea (Afectiune, IstoricAfectiuni, Medic, Pacient, Programare, RegistruTratament, Tratament): ");
-        String ent = scanner.nextLine();
-        System.out.println();
-
-        switch(cmd) {
-            case "adauga":
-                addEntity(ent);
-                break;
-            case "afiseaza":
-                showEntity(ent);
-                break;
-            case "returneaza":
-                returnEntity(ent);
-                break;
-            case "iesi":
-                //
-                break;
-            default:
-                System.out.println("Comanda invalida!");
-        }
-    }
-
-    public static void showEntity(String ent) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Alege tipul (byIndex, byName, all): ");
-        String type = scanner.nextLine();
-        System.out.println();
-
-        switch(ent) {
-            case "Afectiune":
-                switch (type) {
-                    case "byIndex":
-                        System.out.print("La ce index? ");
-                        int idx = scanner.nextInt();
-                        System.out.println();
-                        clinica.afiseazaAfectiune(idx);
-                        break;
-                    case "byName":
-                        System.out.print("Cu ce denumire? ");
-                        String den = scanner.nextLine();
-                        System.out.println();
-                        clinica.getAfectiuneByDenumire(den).afiseazaAfectiune();
-                        break;
-                    case "all":
-                        clinica.afiseazaAfectiuni();
-                        break;
-                    default:
-                        System.out.println("Comanda invalida!");
-                }
-                break;
-        }
-    }
-
-    public static void addEntity(String ent) {
-        Scanner scanner = new Scanner(System.in);
-
-
-    }
-
-    public static void returnEntity(String ent) {
-        Scanner scanner = new Scanner(System.in);
-
-
     }
 
     public static void init() {

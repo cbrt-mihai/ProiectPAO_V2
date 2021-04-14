@@ -1,7 +1,6 @@
-package Service;
+package service;
 
-import Model.Afectiune;
-import Model.Medic;
+import model.Medic;
 
 public class TabelMedic {
     private int lastId = 0;
@@ -16,7 +15,7 @@ public class TabelMedic {
 
     public Medic getMedicByIndex(int k) {
         Medic mdAux = new Medic();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return mdAux;
         }
@@ -48,7 +47,7 @@ public class TabelMedic {
     }
 
     public void afiseazaMedic(int k) {
-        if (k > nr)
+        if (k > nr || k < 0)
             System.out.println("Nu exista inregistrarea.");
         else
             System.out.println(medici[k].getId() + ". " +

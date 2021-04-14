@@ -1,32 +1,32 @@
-package Model;
+package model;
 
 public class Programare {
     private int id;
-    private int id_medic;
-    private int id_pacient;
+    private int idMedic;
+    private int idPacient;
     private String data;
     private String ora;
 
-    public Programare(int id_, int id_medic_, int id_pacient_, String data_, String ora_) {
-        id = id_;
-        id_medic = id_medic_;
-        id_pacient = id_pacient_;
-        data = data_;
-        ora = ora_;
+    public Programare(int id, int idMedic, int idPacient, String data, String ora) {
+        this.id = id;
+        this.idMedic = idMedic;
+        this.idPacient = idPacient;
+        this.data = data;
+        this.ora = ora;
     }
 
     public Programare() {
         id = -1;
-        id_medic = -1;
-        id_pacient = -1;
+        idMedic = -1;
+        idPacient = -1;
         data = "zz/ll/aaaa";
         ora = "xx:xx";
     }
 
     public void afiseazaProgramare() {
         System.out.println(id + ". " +
-                id_medic + " - " +
-                id_pacient + " - " +
+                idMedic + " - " +
+                idPacient + " - " +
                 data + " - " +
                 ora);
     }
@@ -39,20 +39,20 @@ public class Programare {
         this.id = id;
     }
 
-    public int getId_medic() {
-        return id_medic;
+    public int getIdMedic() {
+        return idMedic;
     }
 
-    public void setId_medic(int id_medic) {
-        this.id_medic = id_medic;
+    public void setIdMedic(int idMedic) {
+        this.idMedic = idMedic;
     }
 
-    public int getId_pacient() {
-        return id_pacient;
+    public int getIdPacient() {
+        return idPacient;
     }
 
-    public void setId_pacient(int id_pacient) {
-        this.id_pacient = id_pacient;
+    public void setIdPacient(int idPacient) {
+        this.idPacient = idPacient;
     }
 
     public String getData() {

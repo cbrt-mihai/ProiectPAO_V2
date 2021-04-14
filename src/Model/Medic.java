@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Medic extends Persoana {
     //private int id;
@@ -6,13 +6,13 @@ public class Medic extends Persoana {
     //private String prenume;
     private String specializare;
 
-    public Medic(int id_, String nume_, String prenume_, String specializare_) {
+    public Medic(int id, String nume, String prenume, String specializare) {
         /*
         id = id_;
         nume = nume_;
         prenume = prenume_;*/
-        super(id_, nume_, prenume_);
-        specializare = specializare_;
+        super(id, nume, prenume);
+        this.specializare = specializare;
     }
 
     public Medic() {

@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.RegistruTratament;
+import model.RegistruTratament;
 
 public class TabelRegistruTratament {
     private int lastId = 0;
@@ -15,7 +15,7 @@ public class TabelRegistruTratament {
 
     public RegistruTratament getRegistruByIndex(int k) {
         RegistruTratament regAux = new RegistruTratament();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return regAux;
         }
@@ -30,7 +30,7 @@ public class TabelRegistruTratament {
     }
 
     public void afiseazaDinRegistru(int k) {
-        if (k > nr)
+        if (k > nr || k < 0)
             System.out.println("Nu exista inregistrarea.");
         else
             System.out.println(registru[k].getId() + ". " +

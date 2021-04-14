@@ -1,20 +1,20 @@
-package Model;
+package model;
 
 public class Pacient extends Persoana {
     //private int id;
     //private String nume;
     //private String prenume;
-    private String data_nasterii;
-    private boolean isActive;
+    private String dataNasterii;
+    private boolean esteActiv;
 
-    public Pacient(int id_, String nume_, String prenume_, String data_nasterii_) {
+    public Pacient(int id, String nume, String prenume, String dataNasterii) {
         /*
         id = id_;
         nume = nume_;
         prenume = prenume_;*/
-        super(id_, nume_, prenume_);
-        data_nasterii = data_nasterii_;
-        isActive = true;
+        super(id, nume, prenume);
+        this.dataNasterii = dataNasterii;
+        esteActiv = true;
     }
 
     public Pacient() {
@@ -23,16 +23,16 @@ public class Pacient extends Persoana {
         nume = "null";
         prenume = "null";*/
         super(-1, "null", "null");
-        data_nasterii = "zz/ll/aaaa";
-        isActive = false;
+        dataNasterii = "zz/ll/aaaa";
+        esteActiv = false;
     }
 
-    public void afiseazaAfectiune() {
+    public void afiseazaPacient() {
         System.out.println(super.getId() + ". " +
                 super.getNume() + " " +
                 super.getPrenume() + " - " +
-                data_nasterii + " - " +
-                isActive);
+                dataNasterii + " - " +
+                esteActiv);
     }
 
 
@@ -60,19 +60,19 @@ public class Pacient extends Persoana {
         super.setPrenume(prenume);
     }
 
-    public String getData_nasterii() {
-        return data_nasterii;
+    public String getDataNasterii() {
+        return dataNasterii;
     }
 
-    public void setData_nasterii(String data_nasterii) {
-        this.data_nasterii = data_nasterii;
+    public void setDataNasterii(String dataNasterii) {
+        this.dataNasterii = dataNasterii;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean isEsteActiv() {
+        return esteActiv;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setEsteActiv(boolean esteActiv) {
+        this.esteActiv = esteActiv;
     }
 }

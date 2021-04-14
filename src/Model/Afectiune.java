@@ -1,14 +1,14 @@
-package Model;
+package model;
 
 public class Afectiune {
     private int id;
     private String denumire;
     private String descriere;
 
-    public Afectiune(int id_, String denumire_, String descriere_) {
-        id =  id_;
-        denumire = denumire_;
-        descriere = descriere_;
+    public Afectiune(int id, String denumire, String descriere) {
+        this.id =  id;
+        this.denumire = denumire;
+        this.descriere = descriere;
     }
 
     public Afectiune() {

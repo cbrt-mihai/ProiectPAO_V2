@@ -1,8 +1,6 @@
-package Service;
+package service;
 
-import Model.Afectiune;
-import Model.Medic;
-import Model.Tratament;
+import model.Tratament;
 
 public class TabelTratament {
     private int lastId = 0;
@@ -17,7 +15,7 @@ public class TabelTratament {
 
     public Tratament getTratamentByIndex(int k) {
         Tratament trAux = new Tratament();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return trAux;
         }
@@ -49,7 +47,7 @@ public class TabelTratament {
     }
 
     public void afiseazaTratament(int k) {
-        if (k > nr)
+        if (k > nr || k < 0)
             System.out.println("Nu exista inregistrarea.");
         else
             System.out.println(tratamente[k].getId() + ". " +

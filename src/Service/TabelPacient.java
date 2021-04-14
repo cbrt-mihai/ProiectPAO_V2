@@ -1,7 +1,6 @@
-package Service;
+package service;
 
-import Model.Medic;
-import Model.Pacient;
+import model.Pacient;
 
 public class TabelPacient {
     private int lastId = 0;
@@ -16,7 +15,7 @@ public class TabelPacient {
 
     public Pacient getPacientByIndex(int k) {
         Pacient pcAux = new Pacient();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return pcAux;
         }
@@ -24,7 +23,7 @@ public class TabelPacient {
             pcAux.setId(pacienti[k].getId());
             pcAux.setNume(pacienti[k].getNume());
             pcAux.setPrenume(pacienti[k].getPrenume());
-            pcAux.setData_nasterii(pacienti[k].getData_nasterii());
+            pcAux.setDataNasterii(pacienti[k].getDataNasterii());
         }
 
         return pcAux;
@@ -39,7 +38,7 @@ public class TabelPacient {
                 pcAux.setId(pacienti[i].getId());
                 pcAux.setNume(pacienti[i].getNume());
                 pcAux.setPrenume(pacienti[i].getPrenume());
-                pcAux.setData_nasterii(pacienti[i].getData_nasterii());
+                pcAux.setDataNasterii(pacienti[i].getDataNasterii());
             }
         }
 
@@ -48,7 +47,7 @@ public class TabelPacient {
     }
 
     public void afiseazaPacient(int k) {
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             System.out.println();
         }
@@ -56,8 +55,8 @@ public class TabelPacient {
             System.out.println(pacienti[k].getId() + ". " +
                     pacienti[k].getNume() + " " +
                     pacienti[k].getPrenume() + " - " +
-                    pacienti[k].getData_nasterii() + " - " +
-                    pacienti[k].isActive());
+                    pacienti[k].getDataNasterii() + " - " +
+                    pacienti[k].isEsteActiv());
             System.out.println();
         }
     }
@@ -67,8 +66,8 @@ public class TabelPacient {
             System.out.println(pacienti[k].getId() + ". " +
                     pacienti[k].getNume() + " " +
                     pacienti[k].getPrenume() + " - " +
-                    pacienti[k].getData_nasterii() + " - " +
-                    pacienti[k].isActive());
+                    pacienti[k].getDataNasterii() + " - " +
+                    pacienti[k].isEsteActiv());
         }
         System.out.println();
     }

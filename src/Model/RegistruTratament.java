@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class RegistruTratament {
     private int id;
@@ -6,11 +6,11 @@ public class RegistruTratament {
     private int idPacient;
     private int idTratament;
 
-    public RegistruTratament(int id_, int idMedic_, int idPacient_, int idTratament_) {
-        id = id_;
-        idMedic = idMedic_;
-        idPacient = idPacient_;
-        idTratament = idTratament_;
+    public RegistruTratament(int id, int idMedic, int idPacient, int idTratament) {
+        this.id = id;
+        this.idMedic = idMedic;
+        this.idPacient = idPacient;
+        this.idTratament = idTratament;
     }
 
     public RegistruTratament() {
@@ -20,7 +20,7 @@ public class RegistruTratament {
         idTratament = -1;
     }
 
-    public void afiseazaAfectiune() {
+    public void afiseazaRegistruTratament() {
         System.out.println(id + ". " +
                 idMedic + " - " +
                 idPacient + " - " +

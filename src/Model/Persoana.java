@@ -1,14 +1,14 @@
-package Model;
+package model;
 
 class Persoana {
     private int id;
     private String nume;
     private String prenume;
 
-    Persoana(int id_, String nume_, String prenume_) {
-        id = id_;
-        nume = nume_;
-        prenume = prenume_;
+    Persoana(int id, String nume, String prenume) {
+        this.id = id;
+        this.nume = nume;
+        this.prenume = prenume;
     }
 
     Persoana() {

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Tratament {
     private int id;
@@ -6,11 +6,11 @@ public class Tratament {
     private String descriere;
     private int pret;
 
-    public Tratament(int id_, String denumire_, String descriere_, int pret_) {
-        id = id_;
-        denumire = denumire_;
-        descriere = descriere_;
-        pret = pret_;
+    public Tratament(int id, String denumire, String descriere, int pret) {
+        this.id = id;
+        this.denumire = denumire;
+        this.descriere = descriere;
+        this.pret = pret;
     }
 
     public Tratament() {

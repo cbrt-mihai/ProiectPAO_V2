@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.IstoricAfectiuni;
+import model.IstoricAfectiuni;
 
 public class TabelIstoricAfectiuni {
     private int lastId = 0;
@@ -15,7 +15,7 @@ public class TabelIstoricAfectiuni {
 
     public IstoricAfectiuni getIstoricByIndex(int k) {
         IstoricAfectiuni iAfAux = new IstoricAfectiuni();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return iAfAux;
         }
@@ -29,7 +29,7 @@ public class TabelIstoricAfectiuni {
     }
 
     public void afiseazaDinIstoric(int k) {
-        if (k > nr)
+        if (k > nr || k < 0)
             System.out.println("Nu exista inregistrarea.");
         else
             System.out.println(istoric[k].getId() + ". " +

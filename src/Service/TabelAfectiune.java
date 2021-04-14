@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.Afectiune;
+import model.Afectiune;
 
 public class TabelAfectiune {
     private int lastId = 0;
@@ -14,7 +14,7 @@ public class TabelAfectiune {
     }
 
     public void afiseazaAfectiune(int k) {
-        if (k > nr)
+        if (k > nr || k < 0)
             System.out.println("Nu exista inregistrarea.");
         else
             System.out.println(afectiuni[k].getId() + ". " +
@@ -24,7 +24,7 @@ public class TabelAfectiune {
 
     public Afectiune getAfectiuneByIndex(int k) {
         Afectiune afAux = new Afectiune();
-        if (k > nr) {
+        if (k > nr || k < 0) {
             System.out.println("Nu exista inregistrarea.");
             return afAux;
         }
