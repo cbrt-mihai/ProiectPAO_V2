@@ -2,10 +2,44 @@ package service;
 
 import model.Pacient;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class TabelPacient {
+    private static TabelPacient INSTANCE;
+
     private int lastId = 0;
     private int nr = 0;
     private Pacient[] pacienti = new Pacient[100];
+
+    public static TabelPacient getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TabelPacient();
+        }
+
+        return INSTANCE;
+    }
+
+    public void citestePacienti(String path) {
+        try {
+            File myObj = new File(path);
+            Scanner myReader = new Scanner(myObj);
+            String[] parts;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                parts = data.split(",");
+
+                adaugaPacient(parts[0], parts[1], parts[2]);
+
+                //System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
     public void adaugaPacient(String nume, String prenume, String data) {
         ++lastId;
@@ -62,6 +96,8 @@ public class TabelPacient {
     }
 
     public void afiseazaPacienti() {
+        System.out.println("Pacienti:");
+
         for(int k=1; k<=nr; k++) {
             System.out.println(pacienti[k].getId() + ". " +
                     pacienti[k].getNume() + " " +
@@ -69,6 +105,8 @@ public class TabelPacient {
                     pacienti[k].getDataNasterii() + " - " +
                     pacienti[k].isEsteActiv());
         }
+
+        System.out.println();
         System.out.println();
     }
 

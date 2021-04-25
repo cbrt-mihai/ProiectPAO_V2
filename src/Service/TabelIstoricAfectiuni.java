@@ -3,9 +3,19 @@ package service;
 import model.IstoricAfectiuni;
 
 public class TabelIstoricAfectiuni {
+    private static TabelIstoricAfectiuni INSTANCE;
+
     private int lastId = 0;
     private int nr = 0;
     private IstoricAfectiuni[] istoric = new IstoricAfectiuni[100];
+
+    public static TabelIstoricAfectiuni getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TabelIstoricAfectiuni();
+        }
+
+        return INSTANCE;
+    }
 
     public void adaugaInIstoric(int id_pacient, int id_afectiune) {
         ++lastId;
@@ -38,6 +48,8 @@ public class TabelIstoricAfectiuni {
     }
 
     public void afiseazaIstoric() {
+        System.out.println("Istoric afectiuni:");
+
         for(int k=1; k<=nr; k++) {
             System.out.println(istoric[k].getId() + ". " +
                     istoric[k].getIdPacient() + " - " +

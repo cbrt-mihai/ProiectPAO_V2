@@ -2,10 +2,44 @@ package service;
 
 import model.Afectiune;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class TabelAfectiune {
+    private static TabelAfectiune INSTANCE;
+
     private int lastId = 0;
     private int nr = 0;
     private Afectiune[] afectiuni = new Afectiune[100];
+
+    public static TabelAfectiune getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TabelAfectiune();
+        }
+
+        return INSTANCE;
+    }
+
+    public void citesteAfectiuni(String path) {
+        try {
+            File myObj = new File(path);
+            Scanner myReader = new Scanner(myObj);
+            String[] parts;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                parts = data.split(",");
+
+                adaugaAfectiune(parts[0], parts[1]);
+
+                //System.out.println(parts[0]);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
     public void adaugaAfectiune(String denumire, String descriere) {
         ++lastId;
@@ -54,6 +88,8 @@ public class TabelAfectiune {
     }
 
     public void afiseazaAfectiuni() {
+        System.out.println("Afectiuni:");
+
         for(int k=1; k<=nr; k++) {
             System.out.println(afectiuni[k].getId() + ". " +
                     afectiuni[k].getDenumire() + " - " +

@@ -3,9 +3,19 @@ package service;
 import model.Programare;
 
 public class TabelProgramare {
+    private static TabelProgramare INSTANCE;
+
     private int lastId = 0;
     private int nr = 0;
     private Programare[] programari = new Programare[100];
+
+    public static TabelProgramare getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TabelProgramare();
+        }
+
+        return INSTANCE;
+    }
 
     public void adaugaProgramare(int id_medic, int id_pacient, String data, String ora) {
         ++lastId;
@@ -60,6 +70,8 @@ public class TabelProgramare {
     }
 
     public void afiseazaProgramari() {
+        System.out.println("Programari:");
+
         for(int k=1; k<=nr; k++) {
             System.out.println(programari[k].getId() + ". " +
                     programari[k].getIdMedic() + " - " +

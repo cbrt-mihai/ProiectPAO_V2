@@ -2,10 +2,44 @@ package service;
 
 import model.Medic;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class TabelMedic {
+    private static TabelMedic INSTANCE;
+
     private int lastId = 0;
     private int nr = 0;
     private Medic[] medici = new Medic[100];
+
+    public static TabelMedic getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TabelMedic();
+        }
+
+        return INSTANCE;
+    }
+
+    public void citesteMedici(String path) {
+        try {
+            File myObj = new File(path);
+            Scanner myReader = new Scanner(myObj);
+            String[] parts;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                parts = data.split(",");
+
+                adaugaMedic(parts[0], parts[1], parts[2]);
+
+                //System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
     public void adaugaMedic(String nume, String prenume, String specializare) {
         ++lastId;
@@ -57,12 +91,15 @@ public class TabelMedic {
     }
 
     public void afiseazaMedici() {
+        System.out.println("Medici:");
+
         for(int k=1; k<=nr; k++) {
             System.out.println(medici[k].getId() + ". " +
                     medici[k].getNume() + " " +
                     medici[k].getPrenume() + " - " +
                     medici[k].getSpecializare());
         }
+
         System.out.println();
         System.out.println();
     }

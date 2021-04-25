@@ -2,13 +2,19 @@ package main;
 
 import service.*;
 
-import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 public class Main {
-    public static TabelClinica clinica = new TabelClinica();
+    public static ClinicaService clinica = ClinicaService.getInstance();
 
-    public static void main(String [] args) {
-        init();
+    public static void main(String [] args) throws FileNotFoundException {
+
+        clinica.citesteAfectiuni("src/files/afectiuni.csv");
+        clinica.citesteMedici("src/files/medici.csv");
+        clinica.citestePacienti("src/files/pacienti.csv");
+        clinica.citesteTratamente("src/files/tratamente.csv");
+
+        //init();
         test();
     }
 
@@ -43,11 +49,12 @@ public class Main {
     }
 
     public static void test() {
-        clinica.getAfectiuneByDenumire("Covid-19").afiseazaAfectiune();
-        clinica.getAfectiuneByDenumire("Hemoragie interna").afiseazaAfectiune();
-
-        clinica.getAfectiuneByIndex(5).afiseazaAfectiune();
-        clinica.getAfectiuneByIndex(2).afiseazaAfectiune();
-        clinica.getPacientByNumeComplet("Alex", "Popa");
+        clinica.afiseazaAfectiuni();
+        clinica.afiseazaIstoric();
+        clinica.afiseazaMedici();
+        clinica.afiseazaPacienti();
+        clinica.afiseazaProgramari();
+        clinica.afiseazaRegistru();
+        clinica.afiseazaTratamente();
     }
 }

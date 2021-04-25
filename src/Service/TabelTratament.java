@@ -2,10 +2,44 @@ package service;
 
 import model.Tratament;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class TabelTratament {
+    private static TabelTratament INSTANCE;
+
     private int lastId = 0;
     private int nr = 0;
     private Tratament[] tratamente = new Tratament[100];
+
+    public static TabelTratament getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TabelTratament();
+        }
+
+        return INSTANCE;
+    }
+
+    public void citesteTratamente(String path) {
+        try {
+            File myObj = new File(path);
+            Scanner myReader = new Scanner(myObj);
+            String[] parts;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                parts = data.split(",");
+
+                adaugaTratament(parts[0], parts[1], Integer.parseInt(parts[2]));
+
+                //System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
     public void adaugaTratament(String denumire, String descriere, int pret) {
         ++lastId;
@@ -57,6 +91,8 @@ public class TabelTratament {
     }
 
     public void afiseazaTratamente() {
+        System.out.println("Tratamente:");
+
         for(int k=1; k<=nr; k++) {
             System.out.println(tratamente[k].getId() + ". " +
                     tratamente[k].getDenumire() + " - " +
