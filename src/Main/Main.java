@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 
 public class Main {
     public static ClinicaService clinica = ClinicaService.getInstance();
+    public static Logger loggie = Logger.getInstance();
 
     public static void main(String [] args) throws FileNotFoundException {
 
@@ -15,7 +16,9 @@ public class Main {
         clinica.citesteTratamente("src/files/tratamente.csv");
 
         //init();
-        test();
+        //test();
+
+        //loggie.logThis("src/files/auditLog.csv", "actiune_test", "acum");
     }
 
     public static void init() {

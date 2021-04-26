@@ -6,8 +6,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import static main.Main.clinica;
+import static main.Main.loggie;
+
 public class TabelAfectiune {
     private static TabelAfectiune INSTANCE;
+
 
     private int lastId = 0;
     private int nr = 0;
@@ -23,6 +27,8 @@ public class TabelAfectiune {
 
     public void citesteAfectiuni(String path) {
         try {
+            loggie.logThis("src/files/auditLog.csv", "citesteAfectiuni");
+
             File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
             String[] parts;
@@ -30,7 +36,7 @@ public class TabelAfectiune {
                 String data = myReader.nextLine();
                 parts = data.split(",");
 
-                adaugaAfectiune(parts[0], parts[1]);
+                clinica.adaugaAfectiune(parts[0], parts[1]);
 
                 //System.out.println(parts[0]);
             }
