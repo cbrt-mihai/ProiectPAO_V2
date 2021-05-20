@@ -10,15 +10,22 @@ public class Main {
 
     public static void main(String [] args) throws FileNotFoundException {
 
+        /*
         clinica.citesteAfectiuni("src/files/afectiuni.csv");
         clinica.citesteMedici("src/files/medici.csv");
         clinica.citestePacienti("src/files/pacienti.csv");
         clinica.citesteTratamente("src/files/tratamente.csv");
+         */
 
         //init();
         //test();
 
         //loggie.logThis("src/files/auditLog.csv", "actiune_test", "acum");
+
+        clinica.dbAfiseazaAfectiuni();
+        clinica.dbAfiseazaMedici();
+        clinica.dbAfiseazaPacienti();
+        clinica.dbAfiseazaTratamente();
     }
 
     public static void init() {

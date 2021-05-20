@@ -1,11 +1,14 @@
 package service;
 
+import config.DatabaseHandler;
 import model.*;
 
 public class ClinicaService {
     private static ClinicaService INSTANCE;
 
     Logger loggie = Logger.getInstance();
+    
+    DatabaseHandler dbh = new DatabaseHandler();
 
     TabelAfectiune tAf = TabelAfectiune.getInstance();
     TabelMedic tMd = TabelMedic.getInstance();
@@ -31,6 +34,7 @@ public class ClinicaService {
 
     public void adaugaAfectiune(String denumire, String descriere) {
         tAf.adaugaAfectiune(denumire, descriere);
+        dbh.adaugaAfectiune(denumire, descriere);
         loggie.logThis("src/files/auditLog.csv", "adaugaAfectiune");
     }
 
@@ -63,6 +67,7 @@ public class ClinicaService {
 
     public void adaugaMedic(String nume, String prenume, String specializare) {
         tMd.adaugaMedic(nume, prenume, specializare);
+        dbh.adaugaMedic(nume, prenume, specializare);
         loggie.logThis("src/files/auditLog.csv", "adaugaMedic");
     }
 
@@ -95,6 +100,7 @@ public class ClinicaService {
 
     public void adaugaPacient(String nume, String prenume, String data) {
         tPac.adaugaPacient(nume, prenume, data);
+        dbh.adaugaPacient(nume, prenume, data);
         loggie.logThis("src/files/auditLog.csv", "adaugaPacient");
     }
 
@@ -198,6 +204,7 @@ public class ClinicaService {
 
     public void adaugaTratament(String denumire, String descriere, int pret) {
         tTrat.adaugaTratament(denumire, descriere, pret);
+        dbh.adaugaTratament(denumire, descriere, pret);
         loggie.logThis("src/files/auditLog.csv", "adaugaTratament");
     }
 
@@ -219,5 +226,27 @@ public class ClinicaService {
     public void afiseazaTratamente() {
         tTrat.afiseazaTratamente();
         loggie.logThis("src/files/auditLog.csv", "afiseazaTratamente");
+    }
+
+    // ------------------------- Database -------------------------
+
+    public void dbAfiseazaAfectiuni() {
+        dbh.afiseazaAfectiuni();
+        loggie.logThis("src/files/auditLog.csv", "dbAfiseazaAfectiuni");
+    }
+
+    public void dbAfiseazaMedici() {
+        dbh.afiseazaMedici();
+        loggie.logThis("src/files/auditLog.csv", "dbAfiseazaMedici");
+    }
+
+    public void dbAfiseazaPacienti() {
+        dbh.afiseazaPacienti();
+        loggie.logThis("src/files/auditLog.csv", "dbAfiseazaPacienti");
+    }
+
+    public void dbAfiseazaTratamente() {
+        dbh.afiseazaTratamente();
+        loggie.logThis("src/files/auditLog.csv", "dbAfiseazaTratamente");
     }
 }
