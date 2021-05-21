@@ -249,4 +249,48 @@ public class ClinicaService {
         dbh.afiseazaTratamente();
         loggie.logThis("src/files/auditLog.csv", "dbAfiseazaTratamente");
     }
+
+    // -----------------------------------------
+
+    public void dbActualizeazaDenumireAfectiuneById(int id, String den) {
+        dbh.actualizeazaDenumireAfectiuneById(id, den);
+        loggie.logThis("src/files/auditLog.csv", "dbActualizeazaDenumireAfectiuneById");
+    }
+
+    public void dbActualizeazaNumeCompletMedicById(int id, String nume, String prenume) {
+        dbh.actualizeazaNumeCompletMedicById(id, nume, prenume);
+        loggie.logThis("src/files/auditLog.csv", "dbActualizeazaNumeCompletMedicById");
+    }
+
+    public void dbActualizeazaNumeCompletPacientById(int id, String nume, String prenume) {
+        dbh.actualizeazaNumeCompletPacientById(id, nume, prenume);
+        loggie.logThis("src/files/auditLog.csv", "dbActualizeazaNumeCompletPacientById");
+    }
+
+    public void dbActualizeazaDenumireTratamentById(int id, String den) {
+        dbh.actualizeazaDenumireTratamentById(id, den);
+        loggie.logThis("src/files/auditLog.csv", "dbActualizeazaDenumireTratamentById");
+    }
+
+    // -----------------------------------------
+
+    public void dbStergeAfectiuneById(int id) {
+        dbh.stergeAfectiuneById(id);
+        loggie.logThis("src/files/auditLog.csv", "dbStergeAfectiuneById");
+    }
+
+    public void dbStergeMedicById(int id) {
+        dbh.stergeMedicById(id);
+        loggie.logThis("src/files/auditLog.csv", "dbStergeMedicById");
+    }
+
+    public void dbStergePacientById(int id) {
+        dbh.stergePacientById(id);
+        loggie.logThis("src/files/auditLog.csv", "dbStergePacientById");
+    }
+
+    public void dbStergeTratamentById(int id) {
+        dbh.stergeTratamentById(id);
+        loggie.logThis("src/files/auditLog.csv", "dbStergeTratamentById");
+    }
 }

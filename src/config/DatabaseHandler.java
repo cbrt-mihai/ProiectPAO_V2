@@ -140,6 +140,92 @@ public class DatabaseHandler {
 
     // ------------------------------------------------ UPDATE
 
+    public void actualizeazaDenumireAfectiuneById(int id, String den) {
+        String sql = "update afectiune af set af.denumire = ? where af.id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setString(1, den);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizeazaNumeCompletMedicById(int id, String num, String pren) {
+        String sql = "update medic med set med.nume = ?, med.prenume = ? where med.id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setString(1, num);
+            statement.setString(2, pren);
+            statement.setInt(3, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizeazaNumeCompletPacientById(int id, String num, String pren) {
+        String sql = "update pacient pac set pac.nume = ?, pac.prenume = ? where pac.id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setString(1, num);
+            statement.setString(2, pren);
+            statement.setInt(3, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizeazaDenumireTratamentById(int id, String den) {
+        String sql = "update tratament tr set tr.denumire = ? where tr.id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setString(1, den);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // ------------------------------------------------ DELETE
+
+    public void stergeAfectiuneById(int id) {
+        String sql = "delete from afectiune where id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stergeMedicById(int id) {
+        String sql = "delete from medic where id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stergePacientById(int id) {
+        String sql = "delete from pacient where id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stergeTratamentById(int id) {
+        String sql = "delete from tratament where id = ?";
+        try (PreparedStatement statement = DatabaseConnection.getInstance().prepareStatement(sql)) {//try with resources
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

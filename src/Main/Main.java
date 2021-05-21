@@ -17,11 +17,6 @@ public class Main {
         clinica.citesteTratamente("src/files/tratamente.csv");
          */
 
-        //init();
-        //test();
-
-        //loggie.logThis("src/files/auditLog.csv", "actiune_test", "acum");
-
         clinica.dbAfiseazaAfectiuni();
         clinica.dbAfiseazaMedici();
         clinica.dbAfiseazaPacienti();
